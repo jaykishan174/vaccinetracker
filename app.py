@@ -38,8 +38,8 @@ while button_1== True:
     current_time = now.strftime("%H:%M")
     
     for datestring in datelist:
-        datestring=datelist[1]
-        r = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode='+str(zipcode)+'&date='+datestring)
+        headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',}
+        r = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode='+str(zipcode)+'&date='+datestring, headers=headers)
         st.write(r.text)
         resp= json.loads(r.text)
         if len(resp['sessions']) >= 1:
