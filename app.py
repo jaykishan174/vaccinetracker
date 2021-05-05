@@ -40,7 +40,7 @@ while button_1== True:
     for datestring in datelist:
         datestring=datelist[1]
         r = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode='+str(zipcode)+'&date='+datestring)
-        st.write(r)
+        st.write(r.text)
         resp= json.loads(r.text)
         if len(resp['sessions']) >= 1:
             for x in resp['sessions']:
